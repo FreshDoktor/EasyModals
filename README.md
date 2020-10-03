@@ -1,27 +1,57 @@
 # EasyModals
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+The service allows you to easily use different types of modals in your angular application. You can also easily implement your own component as a modal. 
 
-## Development server
+## Current implemented
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Confirmation Modal](#confirmation-modal)
+#### Planned
 
-## Code scaffolding
+* Custom Modal -> Will allow you to use own component as modal and returns any object you want.
+* Information Modal -> Will shows an message/image and returns nothing when closed.
+* Slider Modal -> Will show multiple messages/images. For example: Step by step guide will return nothing.
+* Custom Slider Modal -> Will show multiple components. Can return everything you want.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##Usage
+After the installation you have to provide the EasyModalsModule in the module where you want to use a modal.
 
-## Build
+```
+import {EasyModalsModule} from "easy-modals";
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [EasyModalsModule],
+  bootstrap: [AppComponent],
+  entryComponents: []
+})
+export class AppModule { }
+```
+Now you have to prepare the configuration for the modal you want to use. Further information can be found under the respective modal.
 
-## Running unit tests
+## Confirmation Modal
+### How to use
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##### Configuration (ConfirmationModalConfig)
+* title -> title of the modal
+* confirmButton -> label of the confirm button
+* declineButton -> label of the reject button
 
-## Running end-to-end tests
+There are also these optional attributes:
+* message: string -> An small additional message
+* backdropForDecline: boolean -> Allows to close the modal by pressing on the background
+* closeable: boolean -> Allows to close the modal with a click on an X
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Now you can inject the EasyModalsService in your component. From there you can now call the method ``openConfirmationModal(config: ConfirmationModalConfig)``.
+Here you can use you configurations from before. 
 
-## Further help
+This Methodes returns an reference from where you can subscribe to the observable $afterClosed. It will return a boolean if the modal was closed. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### How it looks like
+
+![Modal](https://i.imgur.com/R4XQReY.png)
