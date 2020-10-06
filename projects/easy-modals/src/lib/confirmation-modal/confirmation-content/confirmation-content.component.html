@@ -1,13 +1,13 @@
-<article class="content-wrapper">
+<div class="content-wrapper">
   <button *ngIf="config.closeable" class="close" (click)="onAbort()"></button>
-  <header class="modal-header">
+  <div class="modal-header">
     <h2>{{config.title}}</h2>
-  </header>
+  </div>
   <div class="content">
     <p>{{config.message}}</p>
   </div>
-  <footer class="modal-footer">
+  <div class="modal-footer">
     <button class="action" (click)="onOkay()">{{config.confirmButton}}</button>
     <button class="action" (click)="onAbort()">{{config.declineButton}}</button>
-  </footer>
-</article>
+  </div>
+</div>
