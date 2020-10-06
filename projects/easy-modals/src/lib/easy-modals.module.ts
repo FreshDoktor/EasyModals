@@ -7,12 +7,14 @@ import {ConfirmationmodalRef} from './confirmation-modal/confirmationmodal-ref';
 import {ConfirmationContentComponent} from './confirmation-modal/confirmation-content/confirmation-content.component';
 import {CommonModule} from '@angular/common';
 import { CustomModalComponent } from './custom-modal/custom-modal.component';
+import {CustomModalRef} from './custom-modal/custom-modal-ref';
+import {CustomModalConfig} from './custom-modal/custom-modal-config';
 
 @NgModule({
   declarations: [EasyModalsComponent, ConfirmationModalComponent, InsertionDirective, ConfirmationContentComponent, CustomModalComponent],
     imports: [
         CommonModule
     ],
-  providers: [ConfirmationModalConfig, ConfirmationmodalRef]
+  providers: [ConfirmationModalConfig, ConfirmationmodalRef, CustomModalRef, CustomModalConfig]
 })
 export class EasyModalsModule { }
