@@ -67,7 +67,6 @@ export class EasyModalsService {
 
     const customModalRef = new CustomModalRef();
     map.set(CustomModalRef, customModalRef);
-
     const sub = customModalRef.$afterClosed.subscribe(() => {
       this.removeCustomComponentFromBody();
       sub.unsubscribe();
@@ -94,7 +93,7 @@ export class EasyModalsService {
     this.customComponentRef.destroy();
   }
 
-  public openCustomModal(component, config: CustomModalConfig) {
+  public openCustomModal(component: Type<any>, config: CustomModalConfig) {
     const dialogRef = this.appendCustomModalComponentToBody(config);
     this.customComponentRef.instance.childComponentType = component;
     return dialogRef;

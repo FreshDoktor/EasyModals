@@ -5,9 +5,10 @@ The service allows you to easily use different types of modals in your angular a
 ## Current implemented
 
 * [Confirmation Modal](#confirmation-modal)
+* [Custom Modal](#custom-modal)
+
 #### Planned
 
-* Custom Modal -> Will allow you to use own component as modal and returns any object you want.
 * Information Modal -> Will shows an message/image and returns nothing when closed.
 * Slider Modal -> Will show multiple messages/images. For example: Step by step guide will return nothing.
 * Custom Slider Modal -> Will show multiple components. Can return everything you want.
@@ -32,7 +33,14 @@ import {EasyModalsModule} from "easy-modals";
 })
 export class AppModule { }
 ```
-Now you have to prepare the configuration for the modal you want to use. Further information can be found under the respective modal.
+
+Now you must inject the EasyModalsService in the component you want to use your modal after that you only have to configure the modal of your choice. 
+
+Further information can be found under the respective modal.
+
+##Getting data from the modal
+
+After calling the respective methode from the service you will get an reference of the current modal. From here you can access an observable '$afterClose' which returns the data specific to the modal when the modal is closed.  
 
 ## Confirmation Modal
 ### How to use
@@ -47,11 +55,24 @@ There are also these optional attributes:
 * backdropForDecline: boolean -> Allows to close the modal by pressing on the background
 * closeable: boolean -> Allows to close the modal with a click on an X
 
-Now you can inject the EasyModalsService in your component. From there you can now call the method ``openConfirmationModal(config: ConfirmationModalConfig)``.
-Here you can use you configurations from before. 
-
-This Methodes returns an reference from where you can subscribe to the observable $afterClosed. It will return a boolean if the modal was closed. 
+##### Usage
+You only have to call the methode ``openConfirmationModal(config: ConfirmationModalConfig)`` and hand over the previously prepared configurations.
+This modal will return a boolean -> true if confirm Button was pressed and well false if decline Button was pressed.
 
 ### How it looks like
 
 ![Modal](https://i.imgur.com/R4XQReY.png)
+
+## Custom Modal
+### How to use
+
+##### Configuration (CustomModalConfig)
+* data: any -> you can give any data you want to your custom component
+* backdropForDecline: boolean -> Allows to close the modal by pressing on the background
+
+##### Usage
+You only have to call the methode ``openCustomModal(youtComponent: Type<any>)`` and hand over the component you want to show and the previously prepared configurations.
+To close the modal you have to inject ``CustomModalRef`` and call the close message with the data you want to return. 
+
+### How it looks like
+Soon

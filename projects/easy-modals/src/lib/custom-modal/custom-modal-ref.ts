@@ -3,10 +3,10 @@ import { Observable, Subject } from 'rxjs';
 export class CustomModalRef {
   constructor() {}
 
-  private readonly afterClosed = new Subject<boolean>();
+  private readonly afterClosed = new Subject<any>();
   $afterClosed: Observable<any> = this.afterClosed.asObservable();
 
-  close(result?: boolean) {
+  close(result?: any) {
     this.afterClosed.next(result);
   }
 }
