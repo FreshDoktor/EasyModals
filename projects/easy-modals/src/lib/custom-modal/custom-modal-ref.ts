@@ -1,12 +1,12 @@
 import { Observable, Subject } from 'rxjs';
 
-export class ConfirmationmodalRef {
+export class CustomModalRef {
   constructor() {}
 
-  private readonly _afterClosed = new Subject<boolean>();
-  $afterClosed: Observable<any> = this._afterClosed.asObservable();
+  private readonly afterClosed = new Subject<boolean>();
+  $afterClosed: Observable<any> = this.afterClosed.asObservable();
 
   close(result?: boolean) {
-    this._afterClosed.next(result);
+    this.afterClosed.next(result);
   }
 }
