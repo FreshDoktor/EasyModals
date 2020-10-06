@@ -1,9 +1,4 @@
-export class ConfirmationModalConfig {
-  title: string;
-  confirmButton: string;
-  declineButton: string;
-
-  message?: string;
+export class CustomModalConfig {
+  data: any;
   backdropForDecline?: boolean;
-  closeable?: boolean;
 }
